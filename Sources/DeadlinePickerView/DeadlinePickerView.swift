@@ -4,12 +4,12 @@
 import SwiftUI
 
 @available(iOS 14.0, *)
-struct DeadlinePickerView: View {
+public struct DeadlinePickerView: View {
     @Binding var isDeadlineEnabled: Bool
     @Binding var deadline: Date?
     @State private var showDatePicker: Bool = false
     
-    var body: some View {
+    public var body: some View {
         VStack {
             HStack {
                 VStack(alignment: .leading) {
