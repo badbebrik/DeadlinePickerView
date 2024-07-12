@@ -9,6 +9,11 @@ public struct DeadlinePickerView: View {
     @Binding var deadline: Date?
     @State private var showDatePicker: Bool = false
     
+    public init(isDeadlineEnabled: Binding<Bool>, deadline: Binding<Date?>) {
+        self._isDeadlineEnabled = isDeadlineEnabled
+        self._deadline = deadline
+    }
+    
     public var body: some View {
         VStack {
             HStack {
@@ -52,9 +57,9 @@ public struct DeadlinePickerView: View {
                     "Выберите дату",
                     selection: Binding($deadline, replacingNilWith: Date()),
                     displayedComponents: .date)
-                    .datePickerStyle(GraphicalDatePickerStyle())
-                    .padding()
-                    .transition(.move(edge: .top).combined(with: .opacity))
+                .datePickerStyle(GraphicalDatePickerStyle())
+                .padding()
+                .transition(.move(edge: .top).combined(with: .opacity))
             }
         }
         .animation(.default, value: showDatePicker)
